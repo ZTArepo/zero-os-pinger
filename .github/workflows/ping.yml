@@ -1,0 +1,18 @@
+name: Zero OS watcher ping
+on:
+  schedule:
+    - cron: "*/15 * * * *" # 15-min cadence (Matt, 2026-06-10); GH may add jitter
+  workflow_dispatch: {}
+permissions: {}
+concurrency:
+  group: watcher-ping
+  cancel-in-progress: false
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl the watcher route (auth via secret)
+        run: |
+          curl -fsS --max-time 280 \
+            -H "Authorization: Bearer ${{ secrets.ZOS_CRON_SECRET }}" \
+            "${{ vars.ZOS_CRON_URL }}"
