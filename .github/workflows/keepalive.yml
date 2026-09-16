@@ -1,7 +1,5 @@
 name: Keepalive
 on:
-  schedule:
-    - cron: "23 6 1 * *" # monthly — resets GitHub's 60-day schedule-disable timer
   workflow_dispatch: {}
 permissions:
   contents: write

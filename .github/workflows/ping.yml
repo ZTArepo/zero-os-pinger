@@ -1,7 +1,5 @@
 name: Zero OS watcher ping
 on:
-  schedule:
-    - cron: "*/15 * * * *" # 15-min cadence (Matt, 2026-06-10); GH may add jitter
   workflow_dispatch: {}
 permissions: {}
 concurrency:
